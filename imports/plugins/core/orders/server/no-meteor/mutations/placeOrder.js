@@ -262,13 +262,13 @@ export default async function placeOrder(context, input) {
   };
 
   let referenceId;
-  const createReferenceIdFunctions = getFunctionsOfType("createReferenceId");
+  const createReferenceIdFunctions = getFunctionsOfType("createOrderReferenceId");
   if (!createReferenceIdFunctions || createReferenceIdFunctions.length === 0) {
     referenceId = Random.id();
   } else {
     referenceId = createReferenceIdFunctions[0]();
     if (createReferenceIdFunctions.length > 1) {
-      Logger.warn("More than one createReferenceId function defined. Using first one defined");
+      Logger.warn("More than one createOrderReferenceId function defined. Using first one defined");
     }
   }
 
